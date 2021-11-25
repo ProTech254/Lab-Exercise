@@ -27,17 +27,17 @@
                       <?php
                       $filename = 'universities.xml';
                       if (file_exists($filename)) {
-                      $universities = simplexml_load_file($filename);
-                      // loop thru each <university> element
-                      foreach ($universities->university as $univ) {
-                      echo '<li>';
-                      echo '<b>' . $univ->name . '</b>';
-                      echo ' (' . $univ->mailing->state . ')';
-                      echo '</li>';
-                      }
+                        $universities = simplexml_load_file($filename);
+                        // loop thru each <university> element
+                        foreach ($universities->university as $univ) {
+                        echo '<li>';
+                        echo '<b>' . $univ->name . '</b>';
+                        echo ' (' . $univ->mailing->state . ')';
+                        echo '</li>';
+                        }
                       }
                       else {
-                      exit('Failed to open ' . $filename);
+                        exit('Failed to open ' . $filename);
                       }
                       ?>
                  </ul>

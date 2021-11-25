@@ -15,11 +15,14 @@ class DatabaseHelper {
 
     public static function runQuery($pdo, $sql, $parameters=array())     {
         // Ensure parameters are in an array
+        
         if (!is_array($parameters)) {
             $parameters = array($parameters);
         }
         $statement = null;
-        if (count($parameters) > 0) {
+       
+        
+        if (count($parameters) == 0) {
             // Use a prepared statement if parameters 
             $statement = $pdo->prepare($sql);
             $executedOk = $statement->execute($parameters);
@@ -27,6 +30,7 @@ class DatabaseHelper {
                 throw new PDOException;
             }
         } else {
+            
             // Execute a normal query     
             $statement = $pdo->query($sql); 
             if (!$statement) {
