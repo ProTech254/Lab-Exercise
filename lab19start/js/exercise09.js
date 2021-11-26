@@ -28,7 +28,7 @@ $(function () {
     $("#results").empty().append(select);
     })
     .fail(function (jqXHR) {
-    alert("Error: " + jqXHR.status);
+    alert("Errors: " + jqXHR.status);
     })
     .always(function () {
     // all done so now hide the animated loading GIF
@@ -40,21 +40,23 @@ $(function () {
     // display animated loading GIF while data is being fetched
     $('.animLoading').show();
     var url =
-    "http://www.randyconnolly.com/funwebdev/services/travel/countries.php";
+    "https://www.randyconnolly.com/funwebdev/services/travel/countries.php";
     // now make asynchronous request for data from the web service
     $.get(url)
     .done(function (data) {
     // loop through returned countries
-    for (let i=0; i<data.length; i++) {
-    // create option element and add to select list
-    var country = data[i];
-    var option = $('<option>',
-    {value: country.iso, text: country.name});
-    $("#countries").append(option);
-    }
+        for (let i=0; i<data.length; i++) {
+            // create option element and add to select list
+            var country = data[i];
+            
+            
+            var option = $('<option>',
+            {value: country.iso, text: country.name});
+            $("#countries").append(option);
+        }
     })
     .fail(function (jqXHR) {
-    alert("Error: " + jqXHR.status);
+        // alert("Errors: " + jqXHR.status);
     })
     .always(function () {
     // all done so now hide the animated loading GIF

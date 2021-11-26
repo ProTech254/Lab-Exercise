@@ -20,13 +20,13 @@ $(function () {
     $("#cities").append(item);
     });
   // add handler for clicking on list items
-  $("#cities li").on("click", function () {
+  $("#cities ul").on("click", function () {
     displayMap($(this));
     });
 
     })
     .fail(function (jqXHR) {
-    alert("Error: " + jqXHR.status);
+    // alert("Error: " + jqXHR.status);
     })
     .always(function () {
     // all done so now hide the animated loading GIF

@@ -6,7 +6,7 @@ window.addEventListener("load", function () {
     // display the data in the array
     var list = document.querySelector('#list');
     for (let i=0; i<universities.length; i++) {
-    list.innerHTML += universities[i].name + '<br>';
+      list.innerHTML += universities[i].name + '<br>';
 }
 
 });

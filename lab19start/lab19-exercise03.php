@@ -36,30 +36,30 @@
                   $filename = 'universities.xml';
                   if (file_exists($filename)) {
                   // create and open the reader
-                  $reader = new XMLReader();
-                  $reader->open($filename);
-                  // loop through the XML file
-                  while ( $reader->read() ) {
-                    $nodeName = $reader->name;
-                    // since all sorts of different XML nodes we must check node type
-                    if ($reader->nodeType == XMLREADER::ELEMENT &&
-                    $nodeName == 'university') {
-                    // create a SimpleXML object from the current painting node
-                    $doc = new DOMDocument('1.0', 'UTF-8');
-                    $univ = simplexml_import_dom($doc->importNode(
-                    $reader->expand(),true));
-                    // now have a single university as an object so can output it
-                    echo '<tr>';
-                    echo '<td>' . $univ->name . '</td>';
-                    echo '<td>' . $univ->mailing->city . '</td>';
-                    echo '<td>' . $univ->mailing->state . '</td>';
-                    echo '</tr>';
+                    $reader = new XMLReader();
+                    $reader->open($filename);
+                    // loop through the XML file
+                    while ( $reader->read() ) {
+                        $nodeName = $reader->name;
+                        // since all sorts of different XML nodes we must check node type
+                        if ($reader->nodeType == XMLREADER::ELEMENT &&
+                            $nodeName == 'university') {
+                            // create a SimpleXML object from the current painting node
+                            $doc = new DOMDocument('1.0', 'UTF-8');
+                            $univ = simplexml_import_dom($doc->importNode(
+                            $reader->expand(),true));
+                            // now have a single university as an object so can output it
+                            echo '<tr>';
+                            echo '<td>' . $univ->name . '</td>';
+                            echo '<td>' . $univ->mailing->city . '</td>';
+                            echo '<td>' . $univ->mailing->state . '</td>';
+                            echo '</tr>';
+                        }
                     }
-                    }
-                    }
-                    else {
+                  }
+                  else {
                     exit('Failed to open ' . $filename);
-                    }
+                  }
                     ?>
                     </tbody>
 

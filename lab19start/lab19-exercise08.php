@@ -11,10 +11,10 @@ header('Content-type: application/json');
 header("Access-Control-Allow-Origin: *");
 // now output the JSON version of the data
 if (is_null($results))
-echo '{"error": {"message":
-"Value not found or Incorrect query string values"}}';
+    echo '{"error": {"message":
+    "Value not found or Incorrect query string values"}}';
 else
-echo json_encode($results);
+    echo json_encode($results);
    
 $connection = null;   
 ?>
