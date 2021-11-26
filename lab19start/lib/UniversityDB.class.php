@@ -9,7 +9,7 @@ class UniversityDB
     private $connection  = null;
     
     private static $baseSQL = "SELECT * FROM universities";
-    private static $constraint = 'order by Name LIMIT 20';
+    private static $constraint = ' order by Name LIMIT 20';
     
     public function __construct($connection) {
         $this->connection  = $connection;
@@ -25,6 +25,7 @@ class UniversityDB
     public function getAll()
     {
         $sql = self::$baseSQL . self::$constraint;
+        // echo $sql;
         $statement = DatabaseHelper::runQuery($this->connection , $sql, null);
         return $statement->fetchAll();        
     }    
